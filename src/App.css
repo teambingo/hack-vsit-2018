@@ -14,7 +14,7 @@ div {
 }
 .demographs {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 50% 50%;
 }
 .emotions,
 .gender,
@@ -51,13 +51,77 @@ div {
   border: none;
   font-size: 2rem;
 }
-.item1 {
-  border: none !important;
+.item1,.item2,.item3,.item4,.item5,.item6,.item7 {
+
   display: grid;
   grid-template-rows: 20% 80%;
 }
 .fill-happy {
-  margin-top: 20%;
-  background: rgba(30, 250, 202, 0.561);
+  background: rgb(40, 216, 178);
   overflow: hidden;
 }
+.fill-exiting {
+  background: rgb(40, 216, 178);
+  overflow: hidden;
+}
+.male {
+  display: grid;
+grid-template-rows: 20% 80%;
+font-family: "Montserrat", sans-serif;
+font-weight: 300;
+color: white;
+opacity: 0.8;
+
+}
+.female {
+  display: grid;
+grid-template-rows: 20% 80%;
+font-family: "Montserrat", sans-serif;
+font-weight: 300;
+color: white;
+opacity: 0.8;
+}
+.male h3,.female h3 {
+ width: 100%;
+ text-align: center;
+}
+
+.male h1,.female h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  z-index: 5;
+ }
+ .days div h1{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: white;
+  opacity: 0.5;
+  font-size: 1.2rem;
+  margin-left: 5%;
+
+ }
+ .days div h3{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin-left: 5%;
+
+ }
+ .lol {
+   position: absolute;
+z-index: 1!important;
+ }
+ .friday{
+  box-shadow: 5px 5px 30px 0px;
+ }
+.recharts-wrapper {
+   position: absolute!important;
+ }
+ .fill-anger {
+   background: rgb(40, 216, 178);
+  box-shadow: 5px 5px 30px 0px;
+ }

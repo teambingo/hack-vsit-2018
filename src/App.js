@@ -177,7 +177,7 @@ class App extends Component {
         </div>
         <div className="views">
           <div className="header">
-            <h1>Views</h1>
+            <h1>Visitors</h1>
           </div>
           <div className="content-seven days">
           <div className="lol" >
@@ -192,7 +192,7 @@ class App extends Component {
               <Area type="monotone" dataKey="uv" stroke="rgb(235,196,75)" fill="rgb(235,196,75)" />
             </AreaChart>
             </div>
-            <div className="monday">
+            <div className="monday day">
               <h1>Monday</h1>
 
               <h3>
@@ -200,42 +200,42 @@ class App extends Component {
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="tuesday">
+            <div className="tuesday day">
               <h1>Tuesday</h1>
               <h3>
                 {" "}
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="wednesday">
+            <div className="wednesday day">
               <h1>Wednesday</h1>
               <h3>
                 {" "}
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="thursday">
+            <div className="thursday day">
               <h1>Thursday</h1>
               <h3>
                 {" "}
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="friday">
+            <div className="friday day">
               <h1>Friday</h1>
               <h3>
                 {" "}
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="saturday">
+            <div className="saturday day">
               <h1>Saturday</h1>
               <h3>
                 {" "}
                 <span style={{ color: "green" }}>+</span> 43
               </h3>
             </div>
-            <div className="sunday">
+            <div className="sunday day">
               <h1>Sunday</h1>
               <h3>
                 {" "}
@@ -251,13 +251,34 @@ class App extends Component {
             <h1>Demographs</h1>
           </div>
           <div className="content-seven">
-            <div className="item1"> </div>
-            <div className="item2" />
-            <div className="item3" />
-            <div className="item4" />
-            <div className="item5" />
-            <div className="item6" />
-            <div className="item7" />
+            <div className="card hot-section">
+              <h5>Hot Section</h5>
+                <h1> Lower Birth</h1>
+            </div>
+            <div className="card currentstocks" >
+            <h5>Stock Left</h5>
+                <h1> 50%</h1>
+            </div>
+            <div className="card currentViewrs">
+            <h5>People</h5>
+                <h1> 3</h1>
+            </div>
+            <div className="card currentSexRation" >
+            <h5>Sex Ratio(m:f)</h5>
+                <h1> 2:1</h1>
+            </div>
+            <div className="card avgage" >
+            <h5>Average Age</h5>
+                <h1> 21</h1>
+            </div>
+            <div className="card activetime">
+            <h5>Hot Time</h5>
+                <h1> 6:00pm</h1>
+            </div>
+            <div className="card hotProduct">
+            <h5>Hot Producs</h5>
+                <h1>Pepsi</h1>
+            </div>
           </div>
         </div>
       </div>

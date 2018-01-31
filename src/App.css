@@ -10,11 +10,12 @@
   position: absolute;
 }
 div {
-  border: 1px solid rgba(29, 23, 23, 0.274);
+
 }
 .demographs {
   display: grid;
   grid-template-columns: 50% 50%;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .emotions,
 .gender,
@@ -22,19 +23,23 @@ div {
 .cards {
   display: grid;
   grid-template-rows: 20% 80%;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .content-seven {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .content-gender {
   display: grid;
   /* background: red; */
   grid-template-columns: 30% 40% 30%;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .header {
   display: flex;
   align-items: center;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .header h1 {
   color: white;
@@ -43,6 +48,7 @@ div {
   font-weight: 300;
   margin-left: 2rem;
   font-size: 1.5rem;
+
 }
 .emoji {
   display: flex;
@@ -50,15 +56,18 @@ div {
   justify-content: center;
   border: none;
   font-size: 2rem;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .item1,.item2,.item3,.item4,.item5,.item6,.item7 {
 
   display: grid;
   grid-template-rows: 20% 80%;
+  border: 1px solid rgba(29, 23, 23, 0.274);
 }
 .fill-happy {
   background: rgb(40, 216, 178);
   overflow: hidden;
+
 }
 .fill-exiting {
   background: rgb(40, 216, 178);
@@ -70,6 +79,7 @@ grid-template-rows: 20% 80%;
 font-family: "Montserrat", sans-serif;
 font-weight: 300;
 color: white;
+border: 1px solid rgba(29, 23, 23, 0.274);
 opacity: 0.8;
 
 }
@@ -79,6 +89,7 @@ grid-template-rows: 20% 80%;
 font-family: "Montserrat", sans-serif;
 font-weight: 300;
 color: white;
+border: 1px solid rgba(29, 23, 23, 0.274);
 opacity: 0.8;
 }
 .male h3,.female h3 {
@@ -108,20 +119,51 @@ opacity: 0.8;
   width: 100%;
   text-align: center;
   font-size: 2rem;
-  margin-left: 5%;
 
  }
  .lol {
    position: absolute;
 z-index: 1!important;
+
  }
- .friday{
+ .friday,.currentViewrs{
   box-shadow: 5px 5px 30px 0px;
  }
 .recharts-wrapper {
    position: absolute!important;
+
  }
  .fill-anger {
    background: rgb(40, 216, 178);
   box-shadow: 5px 5px 30px 0px;
+
+ }
+ .card h5{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: white;
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+
+ }
+ .card h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  justify-self: center;
+  align-items: center;
+  margin-top: -25%;
+ }
+ .card {
+   display: grid;
+   border: 1px solid rgba(29, 23, 23, 0.274);
+
+ }
+ .day {
+  border: 1px solid rgba(29, 23, 23, 0.274);
  }

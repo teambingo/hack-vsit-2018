@@ -1,147 +1,89 @@
 import React, { Component } from "react";
 import { Pie, PieChart, AreaChart, Area } from "recharts";
+import firebase from 'firebase';
 import logo from "./logo.svg";
 import "./App.css";
 const DATA = [
-  { name: "Group A", value: 237, fill: "rgb(100,212,249)" },
-  { name: "Group B", value: 56, fill: "rgb(250,107,91)" }
+  { name: "Group A", value: 164, fill: "rgb(100,212,249)" },
+  { name: "Group B", value: 36, fill: "rgb(250,107,91)" }
 ];
 const dd = [
-  { name: "Page A", uv: 5000, pv: 3800, amt: 2400 },
-  { name: "Page B", uv: 1000, pv: 1398, amt: 2210 },
-  { name: "Page C", uv: 2000, pv: 9800, amt: 2290 },
-  { name: "Page D", uv: 2780, pv: 3908, amt: 2000 },
-  { name: "Page E", uv: 1890, pv: 4800, amt: 2181 },
-  { name: "Page F", uv: 2000, pv: 2000, amt: 2500 },
+  { name: "Page A", uv: 500, pv: 3800, amt: 2400 },
+  { name: "Page B", uv: 100, pv: 1398, amt: 2210 },
+  { name: "Page C", uv: 200, pv: 9800, amt: 2290 },
+  { name: "Page D", uv: 278, pv: 3908, amt: 2000 },
+  { name: "Page E", uv: 189, pv: 4800, amt: 2181 },
+  { name: "Page F", uv: 200, pv: 2000, amt: 2500 },
+  { name: "Page g", uv: 200, pv: 2000, amt: 2500 }
 ];
-const DEDE = [
-  {
-    "faceAttributes": {
-      "gender": "male",
-      "hair": {
-        "invisible": false,
-        "bald": 0.07,
-        "hairColor": [
-          { "confidence": 1.0, "color": "black" },
-          { "confidence": 0.44, "color": "other" },
-          { "confidence": 0.39, "color": "brown" },
-          { "confidence": 0.3, "color": "gray" },
-          { "confidence": 0.2, "color": "red" },
-          { "confidence": 0.04, "color": "blond" }
-        ]
-      },
-      "makeup": { "eyeMakeup": false, "lipMakeup": false },
-      "headPose": { "roll": 3.4, "yaw": -4.0, "pitch": 0.0 },
-      "noise": { "value": 0.49, "noiseLevel": "medium" },
-      "occlusion": {
-        "eyeOccluded": false,
-        "mouthOccluded": false,
-        "foreheadOccluded": false
-      },
-      "glasses": "ReadingGlasses",
-      "facialHair": { "moustache": 0.3, "beard": 0.2, "sideburns": 0.0 },
-      "blur": { "value": 0.0, "blurLevel": "low" },
-      "exposure": { "value": 0.0, "exposureLevel": "underExposure" },
-      "age": 26.9,
-      "smile": 0.0,
-      "emotion": {
-        "contempt": 0.001,
-        "happiness": 0.0,
-        "disgust": 0.0,
-        "neutral": 0.996,
-        "anger": 0.0,
-        "sadness": 0.002,
-        "fear": 0.0,
-        "surprise": 0.0
-      },
-      "accessories": [{ "confidence": 1.0, "type": "glasses" }]
-    },
-    "faceRectangle": { "height": 175, "left": 357, "width": 175, "top": 254 },
-    "faceId": "b059eb65-e476-4344-9206-a8a6d8368043"
-  },
-  {
-    "faceAttributes": {
-      "gender": "male",
-      "hair": {
-        "invisible": false,
-        "bald": 0.01,
-        "hairColor": [
-          { "confidence": 1.0, "color": "black" },
-          { "confidence": 0.53, "color": "other" },
-          { "confidence": 0.31, "color": "brown" },
-          { "confidence": 0.16, "color": "red" },
-          { "confidence": 0.09, "color": "gray" },
-          { "confidence": 0.03, "color": "blond" }
-        ]
-      },
-      "makeup": { "eyeMakeup": false, "lipMakeup": false },
-      "headPose": { "roll": -15.4, "yaw": -13.9, "pitch": 0.0 },
-      "noise": { "value": 1.0, "noiseLevel": "high" },
-      "occlusion": {
-        "eyeOccluded": false,
-        "mouthOccluded": false,
-        "foreheadOccluded": false
-      },
-      "glasses": "ReadingGlasses",
-      "facialHair": { "moustache": 0.0, "beard": 0.0, "sideburns": 0.0 },
-      "blur": { "value": 0.0, "blurLevel": "low" },
-      "exposure": { "value": 0.17, "exposureLevel": "underExposure" },
-      "age": 15.3,
-      "smile": 0.007,
-      "emotion": {
-        "contempt": 0.002,
-        "happiness": 0.007,
-        "disgust": 0.005,
-        "neutral": 0.943,
-        "anger": 0.006,
-        "sadness": 0.026,
-        "fear": 0.002,
-        "surprise": 0.01
-      },
-      "accessories": [{ "confidence": 0.96, "type": "glasses" }]
-    },
-    "faceRectangle": { "height": 41, "left": 649, "width": 41, "top": 322 },
-    "faceId": "ddef6455-232f-4494-a158-d02d89e6579a"
-  }
-]
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data:[]
+    }
+  }
+ componentWillMount() {
+  const config = {
+    apiKey: "AIzaSyCOmubrc3gEd6LOW5UfRH5LVaL-GFgRCgk",
+    authDomain: "not-so-awesome-project-45a2e.firebaseapp.com",
+    databaseURL: "https://not-so-awesome-project-45a2e.firebaseio.com",
+    projectId: "not-so-awesome-project-45a2e",
+    storageBucket: "not-so-awesome-project-45a2e.appspot.com",
+    messagingSenderId: "481329884022"
+};
+  firebase.initializeApp(config);
+  var ref  = firebase.database().ref('/vsit/data')
+  ref.limitToLast(1).on('child_added',(snapshot)=>{
+
+    this.setState({
+      data:snapshot.val()
+    })
+    })
+
+ }
+
+
+
   render() {
+    { console.log(this.state.data)}
     return (
       <div className="container">
         <div className="demographs">
           <div className="emotions">
             <div className="header">
               <h1>Emotions</h1>
+
             </div>
             <div className="content-seven">
               <div className="item1">
                 <div className="emoji">😁</div>
-                <div className="fill-happy" />
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].happiness* 150):(0)}px`}} />
               </div>
               <div className="item2">
                 <div className="emoji">😕</div>
-                <div className="fill-happy" />
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].sadness* 150):(0)}px`}} />
               </div>
               <div className="item3">
                 <div className="emoji">😯</div>
-                <div className="fill-happy" />
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].contempt* 150):(0)}px`}} />
               </div>
               <div className="item4">
                 <div className="emoji">😡</div>
-                <div className="fill-anger" />
+                <div className="fill-happy"  style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].anger* 150):(0)}px`}}/>
               </div>
               <div className="item5">
                 <div className="emoji">😨</div>
-                <div className="fill-happy" />
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].fear* 150):(0)}px`}} />
               </div>
               <div className="item6">
-                <div className="emoji">😊</div>
-                <div className="fill-happy" />
+                <div className="emoji"  >😐</div>
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].neutral* 150):(0)}px`}} />
               </div>
               <div className="item7">
                 <div className="emoji">🤩</div>
-                <div className="fill-exiting" />
+                <div className="fill-happy" style={{height:`${this.state.data['emotions'] ? (this.state.data['emotions'].surprise* 150):(0)}px`}} />
               </div>
             </div>
           </div>
@@ -153,7 +95,7 @@ class App extends Component {
             <div className="content-gender">
               <div className="male">
                 <h3>M</h3>
-                <h1> 237</h1>
+                <h1> {DATA[0].value}</h1>
               </div>
 
               <div>
@@ -170,7 +112,7 @@ class App extends Component {
               </div>
               <div className="female">
                 <h3>F</h3>
-                <h1> 56</h1>
+                <h1> {DATA[1].value}</h1>
               </div>
             </div>
           </div>
@@ -180,69 +122,50 @@ class App extends Component {
             <h1>Visitors</h1>
           </div>
           <div className="content-seven days">
-          <div className="lol" >
-            <AreaChart
-
-              style={{position:'absolute'}}
-            width={1435}
-              height={220}
-              data={dd}
-
-            >
-              <Area type="monotone" dataKey="uv" stroke="rgb(235,196,75)" fill="rgb(235,196,75)" />
-            </AreaChart>
+            <div className="lol">
+              <AreaChart
+                style={{ position: "absolute" }}
+                width={1435}
+                height={220}
+                data={dd}
+              >
+                <Area
+                  type="monotone"
+                  dataKey="uv"
+                  stroke="rgb(235,196,75)"
+                  fill="rgb(235,196,75)"
+                />
+              </AreaChart>
             </div>
             <div className="monday day">
               <h1>Monday</h1>
 
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[0].uv}</h3>
             </div>
             <div className="tuesday day">
               <h1>Tuesday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[1].uv}</h3>
             </div>
             <div className="wednesday day">
               <h1>Wednesday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[2].uv}</h3>
             </div>
             <div className="thursday day">
               <h1>Thursday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[3].uv}</h3>
             </div>
             <div className="friday day">
               <h1>Friday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[4].uv}</h3>
             </div>
             <div className="saturday day">
               <h1>Saturday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[5].uv}</h3>
             </div>
             <div className="sunday day">
               <h1>Sunday</h1>
-              <h3>
-                {" "}
-                <span style={{ color: "green" }}>+</span> 43
-              </h3>
+              <h3> {dd[6].uv}</h3>
             </div>
-
           </div>
         </div>
 
@@ -253,31 +176,31 @@ class App extends Component {
           <div className="content-seven">
             <div className="card hot-section">
               <h5>Hot Section</h5>
-                <h1> Lower Birth</h1>
+              <h1> {this.state.data['shelf'] ? (this.state.data['shelf']): "Middle"}</h1>
             </div>
-            <div className="card currentstocks" >
-            <h5>Stock Left</h5>
-                <h1> 50%</h1>
+            <div className="card currentstocks">
+              <h5>Stock Left</h5>
+              <h1> 50%</h1>
             </div>
             <div className="card currentViewrs">
-            <h5>People</h5>
-                <h1> 3</h1>
+              <h5>People</h5>
+              <h1>{this.state.data['person'] ? (this.state.data['person']): 68}</h1>
             </div>
-            <div className="card currentSexRation" >
-            <h5>Sex Ratio(m:f)</h5>
-                <h1> 2:1</h1>
+            <div className="card currentSexRation">
+              <h5>Sex Ratio(m:f)</h5>
+              <h1>5:1 </h1>
             </div>
-            <div className="card avgage" >
-            <h5>Average Age</h5>
-                <h1> 21</h1>
+            <div className="card avgage">
+              <h5>Average Age</h5>
+              <h1>{Math.floor(this.state.data['age']?(this.state.data['age']) : 25)} </h1>
             </div>
             <div className="card activetime">
-            <h5>Hot Time</h5>
-                <h1> 6:00pm</h1>
+              <h5>Hot Time</h5>
+              <h1> 6:00pm</h1>
             </div>
             <div className="card hotProduct">
-            <h5>Hot Producs</h5>
-                <h1>Pepsi</h1>
+              <h5>Hot Producs</h5>
+              <h1>Pepsi</h1>
             </div>
           </div>
         </div>

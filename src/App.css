@@ -64,11 +64,15 @@ div {
   grid-template-rows: 20% 80%;
   border: 1px solid rgba(29, 23, 23, 0.274);
 }
+.item1 {
+  grid-template-rows: 20% 80%;
+}
 .fill-happy {
   background: rgb(40, 216, 178);
   overflow: hidden;
-
+  height: 0px;
 }
+.fear
 .fill-exiting {
   background: rgb(40, 216, 178);
   overflow: hidden;
